@@ -15,6 +15,12 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Intercept every HTTP request
+ * Extract and validate the JWT Token
+ * Set up the authenticated user in Spring Security's context
+ * Basically checks every request carries proof that the user is who they claim to be.
+ */
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 	@Autowired
@@ -55,6 +61,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 			// Create the authentication object
 			var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
 			var auth = new UsernamePasswordAuthenticationToken(user, null, authorities);
+			// Set the auth so anytime we can access the Object
 			SecurityContextHolder.getContext().setAuthentication(auth);
 		}
 	}

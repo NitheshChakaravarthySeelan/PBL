@@ -17,6 +17,33 @@ import org.springframwork.security.web.authentication.UsernamePasswordAuthentica
 public class SecurityConfig {
 	@Autowired
 	private JwtAuthFilter jwtAuthFilter;
+	
+	/**
+	 * Spring security process req through a chain of filter
+	 * This bean defines the order and behavior of those filter
+	 * By returning http.build(), we create the chain for spring to use.
+	 */
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		// Disable the CSRF cause we are stateless and use JWT
+		http.csrf().disable();
+		// Stateless session management
+		http.sessionManagement()
+			sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-	public SecurityConfig {
-		
+		// Define Endpoint Access Rules
+		http.authorizeHttpRequests(auth -> auth
+    			.requestMatchers("/api/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+    			.requestMatchers("/api/admin/**").hasRole("ADMIN")
+    			.anyRequest().authenticated());
+
+		// Adding JWT to the filter chain
+		http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+		 return http.build();
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+}
