@@ -5,11 +5,11 @@ import io.jsonwebtoken.*;
 // Utility to generate secure jwt key using HMAC
 import io.jsonwebtoken.security.Keys;
 // Injects value from application.properties
-import org.springfromework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Value;
 // Marks it as spring managed bean used for dependency injection
 import org.springframework.stereotype.Component;
 // Interface for the crypt key
-import java.security.key;
+import java.security.Key;
 import java.util.Date;
 
 @Component
@@ -27,11 +27,11 @@ public class JwtService {
 	// Subject tells who the token belongs to 
 	public String generateToken(String subject) {
 		Date issuedAt = new Date();
-		long expiration = new Date(issuedAt.getTime() + expirationMillis);
-		String token = Jwts.builder()
+		Date expirationDate = new Date(issuedAt.getTime() + expiration);
+		return Jwts.builder()
 				.setSubject(subject)
 				.setIssuedAt(issuedAt)
-				.setExpiration(expiration)
+				.setExpiration(expirationDate)
 				.signWith(key, SignatureAlgorithm.HS256)
 				.compact();
 	}
@@ -46,22 +46,16 @@ public class JwtService {
 	}
 
 	public String extractSubject(String token) {
-		return Jwts.parseBuilder()
-			.setSigningKey(key)
-			.build()
-			.parseClaimsJws(token)
+		return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token)
 			.getBody()
 			.getSubject();
 	}
 
 	public boolean isTokenExpired(String token) {
-		Date exp = Jsts.parseBuilder()
-				.setSigningKey(key)
-				.build()
-				.parserClaimsJws(token)
+		Date exp = Jwts.parser().setSigningKey(key).build().parseClaimsJws(token)
 				.getBody()
 				.getExpiration();
 		Date currDate = new Date();
-		return exp == currDate;
+		return exp.before(currDate);
 	}
 }

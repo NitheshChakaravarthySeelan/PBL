@@ -1,17 +1,20 @@
+
 package com.chat.share.infrastructure.security.filter;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
+import com.chat.share.domain.model.User;
+import com.chat.share.domain.repository.UserRepository;
+import com.chat.share.infrastructure.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-// import com.chat.share.repo.UserRepository;
-// import com.chat.share.model.User;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
@@ -34,7 +37,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		final String authHeader = req.getHeader("Authorization");
 
 		// If the header doesn't exist or isn't prefixed with Bearer we skip
-		if (authHeader == null || !authHeader.startswith("Bearer")) {
+		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 			chain.doFilter(req, res);
 			return;
 		}
@@ -45,7 +48,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		// Parse the subject
 		String email;
 		try {
-			String email = jwtService.extractSubject(token);
+			email = jwtService.extractSubject(token);
 		} catch (Exception e) {
 			chain.doFilter(req, res);
 			return;
@@ -56,7 +59,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		User user = userRepo.findByEmail(email).orElse(null);
 
 		// Validate token against user idendity
-		if (user != null && jwtService.isTokenValid(token, email)) {
+		if (user != null && jwtService.isTokenValid(token, user.getEmail())) {
 			// If both pass user is legidimate
 			// Create the authentication object
 			var authorities = List.of(new SimpleGrantedAuthority("ROLE_" + user.getRole().name()));
@@ -67,4 +70,5 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 	}
 	
 	chain.doFilter(req, res);
+}
 }

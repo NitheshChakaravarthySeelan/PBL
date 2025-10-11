@@ -1,5 +1,5 @@
 # Need to change
-The service cause its a bad design methods on a lont term.
+The service cause its a bad design methods on a long term.
 
 ┌───────────────────────────┐
 │        Controller         │  →  Handles HTTP (REST APIs)

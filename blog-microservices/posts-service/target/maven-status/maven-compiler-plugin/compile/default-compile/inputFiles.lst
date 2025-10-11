@@ -1,0 +1,9 @@
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/security/SecurityConfig.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/application/dto/PostDto.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/domain/repository/PostRepository.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/security/filter/GatewayHeaderAuthenticationFilter.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/application/mapper/PostMapper.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/application/controller/PostController.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/domain/model/Post.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/domain/services/PostService.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/posts-service/src/main/java/com/blog/postservice/PostsServiceApplication.java

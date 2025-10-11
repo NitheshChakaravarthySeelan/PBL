@@ -1,8 +1,9 @@
 package com.chat.share.infrastructure.security.auth;
 
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.facotry.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -28,3 +29,4 @@ public class AuthController {
 		// Returns the authenticated principal User entity in our setup
 		return ResponseEntity.ok(principal);
 	}
+}

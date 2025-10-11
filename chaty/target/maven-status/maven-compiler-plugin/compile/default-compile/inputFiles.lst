@@ -1,10 +1,23 @@
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/services/UserService.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/model/Post.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/services/PostService.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/model/User.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/repository/UserRepository.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/ChatyApplication.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/HelloController.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/repository/PostRepository.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/PostController.java
-/media/nithesh/New Volume/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/UserController.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/model/Post.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/auth/AuthService.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/PostController.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/repository/UserRepository.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/JwtService.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/mapper/UserMapper.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/services/UserService.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/filter/JwtAuthFilter.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/model/Role.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/UserController.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/ChatyApplication.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/mapper/PostMapper.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/services/PostService.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/auth/LoginRequest.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/model/User.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/auth/RegisterRequest.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/auth/AuthController.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/SecurityConfig.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/infrastructure/security/auth/AuthResponse.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/controller/HelloController.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/dto/PostDto.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/application/dto/UserDto.java
+/mnt/auto-mount/Coding/Java/PBL/chaty/src/main/java/com/chat/share/domain/repository/PostRepository.java

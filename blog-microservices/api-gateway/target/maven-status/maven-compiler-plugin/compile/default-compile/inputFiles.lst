@@ -1,0 +1,3 @@
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/api-gateway/src/main/java/com/blog/apigateway/security/JwtService.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/api-gateway/src/main/java/com/blog/apigateway/filter/JwtAuthenticationFilter.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/api-gateway/src/main/java/com/blog/apigateway/ApiGatewayApplication.java

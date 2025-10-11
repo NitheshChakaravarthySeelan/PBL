@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: users-service
+  jwt:
+    secret: afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafaf
+    expiration: 3600000 # 1 hour in milliseconds
+  datasource:
+    url: jdbc:postgresql://postgres-users:5432/usersdb
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
