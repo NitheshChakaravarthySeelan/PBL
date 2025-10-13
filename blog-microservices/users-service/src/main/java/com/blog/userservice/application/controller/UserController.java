@@ -1,9 +1,9 @@
 
 package com.blog.userservice.application.controller;
 
-import com.blog.userservice.application.mapper.UserMapper;
-import com.blog.userservice.application.dto.UserDto;
-import com.blog.userservice.domain.model.User;
+import com.blog.common.UserMapper;
+import com.blog.common.UserDto;
+import com.blog.common.User;
 import com.blog.userservice.domain.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

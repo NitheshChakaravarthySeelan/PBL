@@ -1,6 +1,6 @@
 package com.blog.userservice.domain.repository;
 
-import com.blog.userservice.domain.model.User;
+import com.blog.common.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

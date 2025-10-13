@@ -1,0 +1,10 @@
+com/blog/postservice/PostsServiceApplication.class
+com/blog/postservice/application/dto/PostDto.class
+com/blog/postservice/application/mapper/PostMapper.class
+com/blog/postservice/security/SecurityConfig.class
+com/blog/postservice/security/filter/GatewayHeaderAuthenticationFilter.class
+com/blog/postservice/domain/repository/PostRepository.class
+com/blog/postservice/application/controller/PostController.class
+com/blog/postservice/application/dto/PostDto$PostDtoBuilder.class
+com/blog/postservice/domain/model/Post.class
+com/blog/postservice/domain/services/PostService.class

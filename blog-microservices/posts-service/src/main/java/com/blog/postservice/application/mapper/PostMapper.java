@@ -2,7 +2,7 @@ package com.blog.postservice.application.mapper;
 
 import com.blog.postservice.application.dto.PostDto;
 import com.blog.postservice.domain.model.Post;
-import com.blog.userservice.application.mapper.UserMapper;
+import com.blog.common.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

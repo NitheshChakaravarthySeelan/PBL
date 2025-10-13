@@ -1,9 +1,10 @@
 package com.blog.postservice.domain.services;
 
+import com.blog.common.User;
 import com.blog.postservice.domain.model.Post;
-import com.blog.userservice.domain.model.User;
 import com.blog.postservice.domain.repository.PostRepository;
-import com.blog.userservice.domain.repository.UserRepository;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +16,25 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final Counter postCreatedCounter;
+
+    public PostService(MeterRegistry registry) {
+        this.postCreatedCounter = Counter.builder("posts_created_total")
+            .description("Number of posts created")
+            .register(registry);
+    }
 
     public List<Post> findAll() {
         return postRepository.findAll();
     }
 
     public Post create(Post post, Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not in the db"));
+        // TODO: This is a temporary fix. 
+        // In a real microservices architecture, this should be a call to the users-service to get the user.
+        User user = new User();
+        user.setId(userId);
         post.setUser(user);
+        postCreatedCounter.increment();
         return postRepository.save(post);
     }
 

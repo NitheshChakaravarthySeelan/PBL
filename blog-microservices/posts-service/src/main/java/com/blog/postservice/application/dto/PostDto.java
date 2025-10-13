@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.blog.userservice.application.dto.UserDto;
+import com.blog.common.UserDto;
 
 @Data
 @Builder

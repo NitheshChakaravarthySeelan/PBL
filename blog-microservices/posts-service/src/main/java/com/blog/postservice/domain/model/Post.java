@@ -1,7 +1,7 @@
 package com.blog.postservice.domain.model;
 
 import jakarta.persistence.*;
-import com.blog.userservice.domain.model.User;
+import com.blog.common.User;
 
 @Entity(name = "AppContent")
 @Table(name = "posts")

@@ -1,6 +1,6 @@
 package com.blog.userservice.domain.services;
 
-import com.blog.userservice.domain.model.User;
+import com.blog.common.User;
 import com.blog.userservice.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

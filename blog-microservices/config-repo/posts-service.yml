@@ -6,19 +6,31 @@ spring:
     name: posts-service
   jwt:
     secret: afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafaf
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: jdbc:h2:mem:postsdb
-    driverClassName: org.h2.Driver
-    username: sa
+    url: jdbc:postgresql://localhost:5432/postsdb
+    driverClassName: org.postgresql.Driver
+    username: user
     password: password
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: posts-service
+  tracing:
+    sampling:
+      probability: 1.0
 
 eureka:
   client:

@@ -1,13 +1,9 @@
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/model/User.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/AuthResponse.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/services/UserService.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/application/mapper/UserMapper.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/SecurityConfig.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/repository/UserRepository.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/model/Role.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/AuthResponse.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/application/controller/UserController.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/LoginRequest.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/filter/GatewayHeaderAuthenticationFilter.java
-/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/application/dto/UserDto.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/UsersServiceApplication.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/services/UserService.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/RegisterRequest.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/SecurityConfig.java

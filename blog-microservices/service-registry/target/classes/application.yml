@@ -7,3 +7,18 @@ eureka:
     fetch-registry: false
   instance:
     hostname: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: service-registry
+  tracing:
+    sampling:
+      probability: 1.0

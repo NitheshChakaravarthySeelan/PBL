@@ -1,0 +1,6 @@
+com/blog/common/Role.class
+com/blog/common/User.class
+com/blog/common/UserMapper.class
+com/blog/common/UserDto.class
+com/blog/common/User$UserBuilder.class
+com/blog/common/UserDto$UserDtoBuilder.class
