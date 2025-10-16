@@ -7,7 +7,7 @@ spring:
   jwt:
     secret: afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafaf
   datasource:
-    url: jdbc:postgresql://localhost:5432/postsdb
+    url: jdbc:postgresql://postgres-posts:5432/postsdb
     driverClassName: org.postgresql.Driver
     username: user
     password: password

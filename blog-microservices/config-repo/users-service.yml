@@ -8,7 +8,7 @@ spring:
     secret: afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafaf
     expiration: 3600000 # 1 hour in milliseconds
   datasource:
-    url: jdbc:postgresql://localhost:5434/usersdb
+    url: jdbc:postgresql://postgres-users:5432/usersdb
     driverClassName: org.postgresql.Driver
     username: user
     password: password
