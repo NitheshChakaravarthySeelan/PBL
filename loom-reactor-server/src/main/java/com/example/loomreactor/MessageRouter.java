@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * It fans those out to all connected clients via sinks
  * Clients -> inboundSink -> Flux pipeline -> broadcast loop -> each client's sink
  */ 
-public class MessageRouter() {
+public class MessageRouter {
 	// Central sink where ConnectionHandlers publish incoming raw lines
 	private final Sinks.Many<ClientMessage> inboundSink;
 	
@@ -22,14 +22,15 @@ public class MessageRouter() {
 	private final Map<String, Sinks.Many<String>> clients = new ConcurrentHashMap<>();
 
 	public MessageRouter() {
-		this.inboundSink = Sinks.Many().multicast().onBackpressureBuffer();
+		this.inboundSink = Sinks.many().multicast().onBackpressureBuffer();
 
 		// Build Processing Pipeline
-		Flux<ClientMessage> pipeline = inboundSink.asFlux().onBackpressureBuffer(1024, drop -> {
+		Flux<ClientMessage> pipeline = inboundSink.asFlux()
+		.onBackpressureBuffer(1024, drop -> {
 			System.out.println("Drow the rem cause overflowing 1024");
 		})
 		// run processing on parallel scheduler
-		.publishOn(Scheduler.boundedElastic())
+		.publishOn(Schedulers.boundedElastic())
 		// transform message
 		.map(cm -> {
 			// Bulding outgoing String
@@ -60,6 +61,7 @@ public class MessageRouter() {
 	public Sinks.Many<String> registerClient(String clientId) {
 		Sinks.Many<String> sink = Sinks.many().unicast().onBackpressureBuffer();
 		clients.put(clientId, sink);
+		return sink;
 	}
 
 	public void unregisterClient(String clientId) {

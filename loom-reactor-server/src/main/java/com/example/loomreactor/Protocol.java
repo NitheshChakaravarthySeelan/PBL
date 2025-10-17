@@ -1,7 +1,9 @@
 package com.example.loomreactor;
 
-import java.util.Instant;
+import java.time.Instant;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 public final class Protocol {
 	
@@ -43,7 +45,7 @@ public final class Protocol {
 		String from = unescape(fromEsc);
 		String message = unescape(messageEsc);
 
-		return Map.of("from", from, "timestamp", Long.toString(ts), "message", message);
+		return Map.of("from", from, "timestamp", tsStr, "message", message);
 	}
 	
 	/* 
@@ -120,5 +122,4 @@ public final class Protocol {
 		res.add(cur.toString());
 		return res;
 	}
-					
-
+}
