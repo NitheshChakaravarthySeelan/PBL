@@ -1,5 +1,47 @@
 version: '3.8'
 services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    hostname: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - blog-network
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    hostname: kafka
+    ports:
+      - "9092:9092"
+      - "9093:9093" # For external access if needed
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    networks:
+      - blog-network
+
+  kafka-topics-creator:
+    image: confluentinc/cp-kafka:7.0.1
+    hostname: kafka-topics-creator
+    command: "bash -c 'echo Waiting for Kafka to be ready... && \
+              cub kafka-ready -b kafka:9092 1 20 && \
+              kafka-topics --create --if-not-exists --topic post-events --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1 && \
+              kafka-topics --create --if-not-exists --topic user-events --bootstrap-server kafka:9092 --partitions 1 --replication-factor 1'"
+    depends_on:
+      - kafka
+    networks:
+      - blog-network
+
   eureka-server:
     build: ./service-registry
     ports:
@@ -42,6 +84,7 @@ services:
       - eureka-server
       - config-server
       - postgres-users
+      - kafka # Add kafka dependency
     networks:
       - blog-network
 
@@ -56,6 +99,7 @@ services:
       - eureka-server
       - config-server
       - postgres-posts
+      - kafka # Add kafka dependency
     networks:
       - blog-network
 
