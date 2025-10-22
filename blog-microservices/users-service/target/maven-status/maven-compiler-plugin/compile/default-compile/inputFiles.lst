@@ -1,9 +1,12 @@
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/repository/UserRepository.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/kafka/UserKafkaConsumer.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/AuthResponse.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/application/controller/UserController.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/LoginRequest.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/filter/GatewayHeaderAuthenticationFilter.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/kafka/KafkaProducerConfig.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/UsersServiceApplication.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/domain/services/UserService.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/auth/RegisterRequest.java
+/mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/kafka/KafkaConsumerConfig.java
 /mnt/auto-mount/Coding/Java/PBL/blog-microservices/users-service/src/main/java/com/blog/userservice/infrastructure/security/SecurityConfig.java

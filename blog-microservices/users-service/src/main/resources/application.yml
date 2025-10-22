@@ -4,6 +4,13 @@ server:
 spring:
   application:
     name: users-service
+  cloud:
+    config:
+      fail-fast: true
+      retry:
+        max-attempts: 10
+        initial-interval: 2000
+        multiplier: 1.5
   jwt:
     secret: afafafafafafafafafafafafafafafafafafafafafafafafafafafafafafafaf
     expiration: 3600000 # 1 hour in milliseconds

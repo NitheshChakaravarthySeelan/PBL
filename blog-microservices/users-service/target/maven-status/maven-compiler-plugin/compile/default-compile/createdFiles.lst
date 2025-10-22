@@ -1,10 +1,13 @@
 com/blog/userservice/infrastructure/security/filter/GatewayHeaderAuthenticationFilter.class
+com/blog/userservice/kafka/KafkaConsumerConfig.class
 com/blog/userservice/infrastructure/security/auth/AuthResponse$AuthResponseBuilder.class
 com/blog/userservice/infrastructure/security/auth/AuthResponse.class
 com/blog/userservice/infrastructure/security/auth/RegisterRequest.class
 com/blog/userservice/infrastructure/security/auth/LoginRequest.class
 com/blog/userservice/domain/services/UserService.class
+com/blog/userservice/kafka/KafkaProducerConfig.class
 com/blog/userservice/infrastructure/security/auth/RegisterRequest$RegisterRequestBuilder.class
+com/blog/userservice/kafka/UserKafkaConsumer.class
 com/blog/userservice/application/controller/UserController.class
 com/blog/userservice/infrastructure/security/auth/LoginRequest$LoginRequestBuilder.class
 com/blog/userservice/infrastructure/security/SecurityConfig.class

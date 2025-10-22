@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 services:
   zookeeper:
     image: confluentinc/cp-zookeeper:7.0.1
@@ -42,64 +42,90 @@ services:
     networks:
       - blog-network
 
-  eureka-server:
-    build: ./service-registry
+  service-registry:
+    build:
+      context: ./service-registry
+      dockerfile: Dockerfile
+    image: blog-microservices_service-registry
     ports:
       - "8761:8761"
     networks:
       - blog-network
 
   config-server:
-    build: ./config-server
+    build:
+      context: ./config-server
+      dockerfile: Dockerfile
+    image: blog-microservices_config-server
     ports:
       - "8888:8888"
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
     depends_on:
-      - eureka-server
+      - service-registry
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     networks:
       - blog-network
 
   api-gateway:
-    build: ./api-gateway
-    ports:
-      - "8088:8080"
-    environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
-      SPRING_CONFIG_IMPORT: configserver:http://config-server:8888
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    image: blog-microservices_api-gateway
     depends_on:
-      - eureka-server
-      - config-server
+      service-registry:
+        condition: service_started
+      config-server:
+        condition: service_healthy
     networks:
       - blog-network
 
   users-service:
-    build: ./users-service
+    build:
+      context: ./users-service
+      dockerfile: Dockerfile
+    image: blog-microservices_users-service
     ports:
       - "8081:8081"
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
       SPRING_CONFIG_IMPORT: configserver:http://config-server:8888
     depends_on:
-      - eureka-server
-      - config-server
-      - postgres-users
-      - kafka # Add kafka dependency
+      service-registry:
+        condition: service_started
+      config-server:
+        condition: service_healthy
+      postgres-users:
+        condition: service_started
+      kafka:
+        condition: service_started
     networks:
       - blog-network
 
   posts-service:
-    build: ./posts-service
+    build:
+      context: ./posts-service
+      dockerfile: Dockerfile
+    image: blog-microservices_posts-service
     ports:
       - "8082:8082"
     environment:
-      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://eureka-server:8761/eureka/
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://service-registry:8761/eureka/
       SPRING_CONFIG_IMPORT: configserver:http://config-server:8888
     depends_on:
-      - eureka-server
-      - config-server
-      - postgres-posts
-      - kafka # Add kafka dependency
+      service-registry:
+        condition: service_started
+      config-server:
+        condition: service_healthy
+      postgres-posts:
+        condition: service_started
+      kafka:
+        condition: service_started
     networks:
       - blog-network
 
@@ -130,7 +156,9 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - type: bind
+        source: ./prometheus.yml
+        target: /etc/prometheus/prometheus.yml
     networks:
       - blog-network
 
